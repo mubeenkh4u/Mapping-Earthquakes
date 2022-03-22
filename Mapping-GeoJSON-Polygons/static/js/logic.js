@@ -32,7 +32,12 @@ let map = L.map("mapid", {
 L.control.layers(baseMaps).addTo(map);
 
 // Accessing the torontoNeighborhoods.json GeoJSON URL
-let torontoData = "https://raw.githubusercontent.com/mubeenkh4u/Mapping-Earthquakes/main/torontoNeighborhoods.json";
+let torontoHoods = "https://raw.githubusercontent.com/mubeenkh4u/Mapping-Earthquakes/main/torontoNeighborhoods.json";
+
+d3.json(torontoHoods).then(function(data) {
+    console.log(data);
+    L.geoJSON(data).addTo(map);
+});
 
 // Pass our map layers into our layer control and add the layer control to the map.
 light.addTo(map);
